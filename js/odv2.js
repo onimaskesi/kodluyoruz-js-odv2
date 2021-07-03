@@ -7,7 +7,7 @@ const completedClass = "completed"
 
 // get list items from local storage and set them to the html
 let list = localStorage.getItem("list") ? JSON.parse(localStorage.getItem("list")) : []
-initList()
+addListToHtml()
 
 // add new item to list and save that to local storage, also write in the html
 addBtnDOM.addEventListener("click", add)
@@ -37,7 +37,7 @@ function add(){
     }
 }
 
-function initList(){
+function addListToHtml(){
     list.forEach(item => addToHtml(item))
 }
 
@@ -48,7 +48,7 @@ function addToHtml(item){
     newitemDOM.type = "button"
     newitemDOM.classList.add("list-group-item", "list-group-item-action")
     newitemDOM.style="vertical-align: middle"
-    newitemDOM.addEventListener("click", itemClicked)
+    newitemDOM.addEventListener("click", itemClick)
 
     let spanTextDOM = document.createElement("span")
     spanTextDOM.classList.add("btn")
@@ -67,7 +67,7 @@ function addToHtml(item){
 
 }
 
-function itemClicked(){
+function itemClick(){
     
     let item = getItem(this.id)
     let classList = this.children[0].classList
@@ -77,7 +77,7 @@ function itemClicked(){
             classList.remove(completedClass)
             item.isCompleted = false
             updateLocalStorage()
-        }else {
+        } else {
             classList.add(completedClass)
             item.isCompleted = true
             updateLocalStorage()
