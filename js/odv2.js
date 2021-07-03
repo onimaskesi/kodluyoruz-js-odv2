@@ -25,10 +25,16 @@ function getItem(id){
 }
 
 function add(){
-    let item = getNewItem()
-    addToHtml(item)
-    list.unshift(item)
-    updateLocalStorage()
+
+    if( !inputDOM.value || inputDOM.value.match(/^\s*$/) !== null){
+        showError()
+    }
+    else{
+        let item = getNewItem()
+        addToHtml(item)
+        list.unshift(item)
+        updateLocalStorage()
+    }
 }
 
 function initList(){
@@ -78,7 +84,6 @@ function itemClicked(){
         }
     }
     
-
 }
 
 function updateLocalStorage(){
@@ -93,9 +98,18 @@ function deleteItem(){
     
     //delete from list
     list.splice(index,1)
+
     //delete from the html
     let btnDOM = document.getElementById(id)
     btnDOM.outerHTML = ""
-    //update local storage
-    localStorage.setItem('list', JSON.stringify(list))
+    
+    updateLocalStorage()
+}
+
+function closeError(element){
+    element.parentNode.style.display = "none"
+}
+
+function showError(){
+    document.getElementById("error").style.display = "block"
 }

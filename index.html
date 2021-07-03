@@ -18,6 +18,11 @@
             <button class="btn btn-outline-secondary" type="button" id="button-add">Ekle</button>
           </div>
 
+          <div id="error" class="alert alert-warning alert-dismissible fade show" role="alert" style="display: none;">
+            <strong>Error!</strong> Boş eleman ekleyemezsiniz!
+            <button onclick="closeError(this)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
           <div class="list-group" id="to-do-list">
 
             <button type="button" class="list-group-item list-group-item-action" style="vertical-align: middle;">
@@ -27,9 +32,6 @@
             
           </div>
     </div>
-
-    
-    
 
     <script src="js/odv2.js"></script>
 </body>
