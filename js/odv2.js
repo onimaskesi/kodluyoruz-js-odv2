@@ -35,6 +35,8 @@ function add(){
         list.unshift(item)
         updateLocalStorage()
     }
+
+    inputDOM.value = ""
 }
 
 function addListToHtml(){
